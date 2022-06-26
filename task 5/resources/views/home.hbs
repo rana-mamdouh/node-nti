@@ -1,0 +1,38 @@
+{{>header}}
+{{>navbar}}
+<section class="container my-5">
+    <h3 class="text-center text-primary">All Users</h3>
+    <table class="table table-bordered table-dark">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#if isEmpty}}
+            <tr>
+                <td colspan="5" class="bg-danger">No posts</td>
+            </tr>
+            {{/if}}
+            {{#each users}}
+            <tr>
+                <td>{{this._id}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.age}}</td>
+                <td>{{this.status}}</td>
+                <td>
+                    <a href="/show/{{this._id}}" class="btn btn-primary">Show</a>
+                    <a href="/edit/{{this._id}}" class="btn btn-warning">Edit</a>
+                    <a href="/delete/{{this._id}}" class="btn btn-danger">Delete</a>
+                    <a href="/change-status/{{this._id}}" class="btn btn-info">Change Status</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>
+{{>footer}}
